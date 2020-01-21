@@ -74,7 +74,7 @@ public class In_Store_StartNewTest {
     driver.findElement(By.cssSelector(".check")).click();
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-    Thread.sleep(35000);
+    Thread.sleep(15000);
     driver.findElement(By.xpath("//*[@id=\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
     Thread.sleep(5000);
     driver.findElement(By.xpath("//*[\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
@@ -127,6 +127,7 @@ public class In_Store_StartNewTest {
     driver.findElement(By.linkText("Create Estimate")).click();
     Thread.sleep(10000);
     driver.findElement(By.linkText("Continue")).click();
+    Thread.sleep(5000);
     driver.findElement(By.cssSelector(".add-on > .icon-calendar")).click();
     Thread.sleep(5000);
     driver.findElement(By.linkText("30")).click();
@@ -140,10 +141,19 @@ public class In_Store_StartNewTest {
     driver.findElement(By.linkText("Start Repair")).click();
     Thread.sleep(5000);
     driver.findElement(By.linkText("Repair Complete")).click();
-    Thread.sleep(5000);
-    driver.findElement(By.linkText("Confirm Estimate")).click();
     Thread.sleep(10000);
-    
+    driver.findElement(By.linkText("Confirm Estimate")).click();
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//*[@id=\"claim\"]/div[2]/div[1]/div[4]/a")).click();
+    Thread.sleep(5000);
+    driver.findElement(By.id("claim-contact-notify-note")).click();
+    driver.findElement(By.id("claim-contact-notify-note")).sendKeys("12");
+    driver.findElement(By.linkText("Contact Notified")).click();
+    Thread.sleep(10000);
+    driver.findElement(By.linkText("Next: Send To RMS")).click();
+    Thread.sleep(10000);
+    driver.findElement(By.linkText("Send to RMS")).click();
+    Thread.sleep(10000);
   }
   
 }

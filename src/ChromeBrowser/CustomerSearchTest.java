@@ -39,7 +39,7 @@ public class CustomerSearchTest {
   }
   @Test
   public void customerSearch() throws InterruptedException {
-    driver.get("https://batteriesplus-uat.repairq.io/site/login");
+    driver.get("http://batteriesplus-uat.repairq.io/site/login");
     driver.manage().window().setSize(new Dimension(1176, 743));
     driver.findElement(By.id("UserLoginForm_username")).click();
     driver.findElement(By.id("UserLoginForm_username")).sendKeys("l.costa@cinq.com.br");
