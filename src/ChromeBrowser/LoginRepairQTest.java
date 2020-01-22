@@ -41,10 +41,19 @@ public class LoginRepairQTest {
 	  
 	driver.get("https://cinq.repairq.io/site/login");
     driver.manage().window().setSize(new Dimension(1311, 912));
-    driver.findElement(By.cssSelector(".block")).click();
-    driver.findElement(By.id("UserLoginForm_username")).sendKeys("lucas");
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys(Keys.ENTER);
+    
+    WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
+    usernameField.click();
+    usernameField.clear();
+    usernameField.sendKeys("l.costa@cinq.com.br");
+    
+    WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
+    passwordField.click();
+    passwordField.clear();
+    passwordField.sendKeys("123");
+    
+    driver.findElement(By.id("UserLoginForm_password")).click();
+    driver.findElement(By.id("UserLoginForm_password")).click();
     Thread.sleep(10000);
   
     driver.quit();

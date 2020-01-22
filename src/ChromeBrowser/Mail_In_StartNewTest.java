@@ -41,18 +41,28 @@ public class Mail_In_StartNewTest {
   public void startNew() throws InterruptedException {
     driver.get("https://batteriesplus-uat.repairq.io/site/login");
     driver.manage().window().setSize(new Dimension(1280, 1024));
-    driver.findElement(By.id("UserLoginForm_username")).click();
-    driver.findElement(By.id("UserLoginForm_username")).sendKeys("l.costa@cinq.com.br");
+    
+    
+    WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
+    usernameField.click();
+    usernameField.clear();
+    usernameField.sendKeys("l.costa@cinq.com.br");
+    
+    WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
+    passwordField.click();
+    passwordField.clear();
+    passwordField.sendKeys("123");
+    
     driver.findElement(By.id("UserLoginForm_password")).click();
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
+    driver.findElement(By.id("UserLoginForm_password")).click();
     driver.findElement(By.cssSelector(".btn-new")).click();
     driver.findElement(By.linkText("Check In")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//div[@id=\'ticketCheckin\']/div[2]/div/a[5]/div")).click();
+    driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.cssSelector(".service-auth-select:nth-child(1) > .image-container")).click();
+    driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='bpb']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.cssSelector("#serviceProgram div:nth-child(2) > .image-container")).click();
+    driver.findElement(By.cssSelector("#serviceProgram [data-service-program = '2']")).click();
     Thread.sleep(5000);
     driver.findElement(By.id("customerSearch")).click();
     Thread.sleep(5000);
@@ -76,12 +86,10 @@ public class Mail_In_StartNewTest {
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
     Thread.sleep(35000);
-    driver.findElement(By.xpath("//*[@id=\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
+    driver.findElement(By.cssSelector("#new-device-form [data-category-id='508']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//*[\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
+    driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='9986']")).click();
     Thread.sleep(5000);
-   // driver.findElement(By.xpath("//*[@id=\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[13]")).click();
- //   Thread.sleep(5000);
     driver.findElement(By.id("claim-device-serial")).sendKeys("123456");
     Thread.sleep(5000);
     driver.findElement(By.id("claim-device-serial")).sendKeys(Keys.ENTER);
@@ -121,7 +129,7 @@ public class Mail_In_StartNewTest {
     Thread.sleep(10000);
     driver.findElement(By.id("addBtn")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//*[@id=\"ticket-item-form\"]/fieldset/div[2]/div[2]/div/div/div/div[1]/div[1]")).click();
+    driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='38243']")).click();
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-large")).click();
     Thread.sleep(5000);

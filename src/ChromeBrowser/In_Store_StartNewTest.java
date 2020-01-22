@@ -41,29 +41,37 @@ public class In_Store_StartNewTest {
   public void startNew() throws InterruptedException {
     driver.get("https://batteriesplus-uat.repairq.io/site/login");
     driver.manage().window().setSize(new Dimension(1280, 1024));
-    driver.findElement(By.id("UserLoginForm_username")).click();
-    driver.findElement(By.id("UserLoginForm_username")).sendKeys("l.costa@cinq.com.br");
+    
+    WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
+    usernameField.click();
+    usernameField.clear();
+    usernameField.sendKeys("l.costa@cinq.com.br");
+    
+    WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
+    passwordField.click();
+    passwordField.clear();
+    passwordField.sendKeys("123");
+    
     driver.findElement(By.id("UserLoginForm_password")).click();
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
+    driver.findElement(By.id("UserLoginForm_password")).click();
     driver.findElement(By.cssSelector(".btn-new")).click();
     driver.findElement(By.linkText("Check In")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//div[@id=\'ticketCheckin\']/div[2]/div/a[5]/div")).click();
+    driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.cssSelector(".service-auth-select:nth-child(1) > .image-container")).click();
+    driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='bpb']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.cssSelector("#serviceProgram div:nth-child(1) > .image-container")).click();
+    driver.findElement(By.cssSelector("#serviceProgram  [data-service-program='1']")).click();
     Thread.sleep(5000);
     driver.findElement(By.id("customerSearch")).click();
     Thread.sleep(5000);
-    Thread.sleep(5000);
     driver.findElement(By.id("customerSearch")).sendKeys("lucas");
-    Thread.sleep(10000);
-    driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
     Thread.sleep(5000);
+    driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
+    Thread.sleep(8000);
    
     {
-      Thread.sleep(5000);
+      
      
       driver.findElement(By.linkText("Dismiss")).click();
    }
@@ -74,13 +82,11 @@ public class In_Store_StartNewTest {
     driver.findElement(By.cssSelector(".check")).click();
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-    Thread.sleep(15000);
-    driver.findElement(By.xpath("//*[@id=\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
+    Thread.sleep(10000);
+    driver.findElement(By.cssSelector("#new-device-form [data-category-id='508']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//*[\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[1]")).click();
+    driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='9986']")).click();
     Thread.sleep(5000);
-   // driver.findElement(By.xpath("//*[@id=\"new-device-form\"]/fieldset/div[1]/div[2]/div/div/div/div[13]")).click();
- //   Thread.sleep(5000);
     driver.findElement(By.id("claim-device-serial")).sendKeys("123456");
     Thread.sleep(5000);
     driver.findElement(By.id("claim-device-serial")).sendKeys(Keys.ENTER);
@@ -94,7 +100,7 @@ public class In_Store_StartNewTest {
     driver.findElement(By.linkText("Continue with Claim")).click();
     Thread.sleep(10000);
     driver.findElement(By.linkText("Save & Submit")).click();
-    Thread.sleep(10000);
+    Thread.sleep(15000);
     driver.findElement(By.cssSelector(".control-group:nth-child(2) .radio-inline:nth-child(3) > .required")).click();
     driver.findElement(By.cssSelector(".control-group:nth-child(7) .radio-inline:nth-child(2) > .required")).click();
     driver.findElement(By.cssSelector(".control-group:nth-child(9) .radio-inline:nth-child(3) > .required")).click();
@@ -120,7 +126,7 @@ public class In_Store_StartNewTest {
     Thread.sleep(10000);
     driver.findElement(By.id("addBtn")).click();
     Thread.sleep(5000);
-    driver.findElement(By.xpath("//*[@id=\"ticket-item-form\"]/fieldset/div[2]/div[2]/div/div/div/div[1]/div[1]")).click();
+    driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='38243']")).click();
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-large")).click();
     Thread.sleep(5000);
@@ -144,7 +150,7 @@ public class In_Store_StartNewTest {
     Thread.sleep(10000);
     driver.findElement(By.linkText("Confirm Estimate")).click();
     Thread.sleep(15000);
-    driver.findElement(By.xpath("//*[@id=\"claim\"]/div[2]/div[1]/div[4]/a")).click();
+    driver.findElement(By.cssSelector("#claim [href^='/ticket/edit/']")).click();
     Thread.sleep(5000);
     driver.findElement(By.id("claim-contact-notify-note")).click();
     driver.findElement(By.id("claim-contact-notify-note")).sendKeys("12");
@@ -153,7 +159,7 @@ public class In_Store_StartNewTest {
     driver.findElement(By.linkText("Next: Send To RMS")).click();
     Thread.sleep(10000);
     driver.findElement(By.linkText("Send to RMS")).click();
-    Thread.sleep(10000);
+    Thread.sleep(12000);
   }
   
 }

@@ -41,10 +41,21 @@ public class CreateContactTest {
   public void createContact() throws InterruptedException {
     driver.get("https://batteriesplus-uat.repairq.io/site/login");
     driver.manage().window().setSize(new Dimension(1176, 743));
-    driver.findElement(By.id("UserLoginForm_username")).click();
-    driver.findElement(By.id("UserLoginForm_username")).sendKeys("l.costa@cinq.com.br");
+    
+    
+    WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
+    usernameField.click();
+    usernameField.clear();
+    usernameField.sendKeys("l.costa@cinq.com.br");
+    
+    WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
+    passwordField.click();
+    passwordField.clear();
+    passwordField.sendKeys("123");
+    
     driver.findElement(By.id("UserLoginForm_password")).click();
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
+    driver.findElement(By.id("UserLoginForm_password")).click();
+
     Thread.sleep(5000);
     driver.findElement(By.cssSelector(".btn-new")).click();
     driver.findElement(By.linkText("Opportunities")).click();
