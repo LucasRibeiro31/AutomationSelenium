@@ -32,7 +32,7 @@ public class FirefoxHeadlessMode {
 	    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
 	    driver.findElement(By.cssSelector(".btn-new")).click();
 		System.out.println("Completed");
-		
+	
 	}
 
 }
