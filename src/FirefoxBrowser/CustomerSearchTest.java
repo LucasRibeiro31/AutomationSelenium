@@ -23,16 +23,13 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-
-
-public class LoginTestTest {
+public class CustomerSearchTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Before
   public void setUp() {
-    driver = new FirefoxDriver();
+	driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
@@ -41,14 +38,32 @@ public class LoginTestTest {
     driver.quit();
   }
   @Test
-  public void loginTest() {
-	  
-	driver.get("https://batteriesplus-uat.repairq.io/site/login");
-    driver.manage().window().setSize(new Dimension(1129, 777));
-    driver.findElement(By.id("UserLoginForm_username")).click();
-    driver.findElement(By.id("UserLoginForm_username")).sendKeys("l.costa@cinq.com.br");
+  public void customerSearch() throws InterruptedException {
+    driver.get("http://batteriesplus-uat.repairq.io/site/login");
+    driver.manage().window().setSize(new Dimension(1176, 743));
+    
+    
+    WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
+    usernameField.click();
+    usernameField.clear();
+    usernameField.sendKeys("l.costa@cinq.com.br");
+    
+    WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
+    passwordField.click();
+    passwordField.clear();
+    passwordField.sendKeys("123");
+    
     driver.findElement(By.id("UserLoginForm_password")).click();
-    driver.findElement(By.id("UserLoginForm_password")).sendKeys("123");
+    driver.findElement(By.id("UserLoginForm_password")).click();
     driver.findElement(By.cssSelector(".btn-new")).click();
+    driver.findElement(By.linkText("Check In")).click();
+    Thread.sleep(5000);
+    driver.findElement(By.cssSelector(".flex:nth-child(2) > .flex-cell:nth-child(2) > .image-container")).click();
+    Thread.sleep(5000);
+    driver.findElement(By.id("customerSearchModalInput")).click();
+    driver.findElement(By.id("customerSearchModalInput")).sendKeys(Keys.DOWN);
+    driver.findElement(By.id("customerSearchModalInput")).sendKeys("pozzi");
+    driver.findElement(By.id("customerSearchModalInput")).sendKeys(Keys.ENTER);
+    Thread.sleep(10000);
   }
 }
