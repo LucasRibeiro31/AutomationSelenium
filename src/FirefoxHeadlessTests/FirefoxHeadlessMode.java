@@ -34,5 +34,4 @@ public class FirefoxHeadlessMode {
 		System.out.println("Completed");
 	
 	}
-
 }
