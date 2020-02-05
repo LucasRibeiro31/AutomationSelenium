@@ -21,7 +21,7 @@ import org.openqa.selenium.interactions.Actions;
 	}
 	
 	@Test
-	public void createContactrFirefox() throws InterruptedException {
+	public void createContactFirefox() throws InterruptedException {
 		createContact(new FirefoxDriver());
 	}
 	

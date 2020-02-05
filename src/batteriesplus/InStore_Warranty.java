@@ -33,6 +33,8 @@ public class InStore_Warranty {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
+		String currentURL = driver.getPageSource();
+		System.out.println(currentURL);
 		driver.manage().window().setSize(new Dimension(1280, 1024));
 
 		WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
