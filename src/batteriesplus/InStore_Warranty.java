@@ -12,27 +12,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class InStore {
+public class InStore_Warranty {
 
 	@Test
-	public void inStoreChrome() throws InterruptedException {
-		inStore(new ChromeDriver());
+	public void instorewarrantyChrome() throws InterruptedException {
+		instorewarranty(new ChromeDriver());
 	}
 
 	
-	public void inStoreFirefox() throws InterruptedException {
-		inStore(new FirefoxDriver());
+	public void instorewarrantyFirefox() throws InterruptedException {
+		instorewarranty(new FirefoxDriver());
 	}
 
 	
-	public void inStoreIE() throws InterruptedException {
-		inStore(new InternetExplorerDriver());
+	public void instorewarranty() throws InterruptedException {
+		instorewarranty(new InternetExplorerDriver());
 	}
 
-	private void inStore(WebDriver driver) throws InterruptedException {
+	private void instorewarranty(WebDriver driver) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		
-		try {
 
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1280, 1024));
@@ -51,37 +49,37 @@ public class InStore {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='bpb']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("#serviceProgram  [data-service-program='1']")).click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		driver.findElement(By.id("customerSearch")).click();
 		Thread.sleep(5000);
 		driver.findElement(By.id("customerSearch")).sendKeys("lucas");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
-		Thread.sleep(8000);
+		Thread.sleep(10000);
 
 		{
 
 			driver.findElement(By.linkText("Dismiss")).click();
 		}
-		
+
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		driver.findElement(By.cssSelector(".check")).click();
-		Thread.sleep(5000);
 		driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-		Thread.sleep(8000);
+		Thread.sleep(7000);
 		driver.findElement(By.cssSelector("#new-device-form [data-category-id='508']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='9986']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys("123456");
+		Thread.sleep(1000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys(Keys.ENTER);
 		driver.switchTo().frame(0);
 		driver.findElement(By.cssSelector("p")).click();
@@ -92,9 +90,9 @@ public class InStore {
 		}
 		driver.switchTo().defaultContent();
 		driver.findElement(By.linkText("Continue with Claim")).click();
-		Thread.sleep(10000);
+		Thread.sleep(9000);
 		driver.findElement(By.linkText("Save & Submit")).click();
-		Thread.sleep(10000);
+		Thread.sleep(8000);
 		driver.findElement(By.cssSelector(".control-group:nth-child(2) .radio-inline:nth-child(3) > .required")).click();
 		driver.findElement(By.cssSelector(".control-group:nth-child(7) .radio-inline:nth-child(2) > .required")).click();
 		driver.findElement(By.cssSelector(".control-group:nth-child(9) .radio-inline:nth-child(3) > .required")).click();
@@ -117,27 +115,32 @@ public class InStore {
 		Thread.sleep(5000);
 		driver.findElement(By.linkText("Save & Submit")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.id("addBtn")).click();
-		Thread.sleep(5000);
+		driver.findElement(By.cssSelector(".btn-icon")).click();
+	    driver.findElement(By.cssSelector(".btn-new > .icon-wrench")).click();
+	    driver.findElement(By.cssSelector(".trigger-verify-service-program > .image-container")).click();
+	    driver.findElement(By.cssSelector(".flex-cell:nth-child(6) > .image-container")).click();
+	    driver.findElement(By.linkText("Continue")).click();
+	    Thread.sleep(3000);
+	  	driver.findElement(By.id("addBtn")).click();
+		Thread.sleep(6000);
 		driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='38243']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.cssSelector(".btn-large")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.linkText("Create Estimate")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.linkText("Continue")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".add-on > .icon-calendar")).click();
-		Thread.sleep(2000);
-		 driver.findElement(By.linkText("20")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.linkText("Continue")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector(".check")).click();
-		driver.findElement(By.linkText("Continue")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.linkText("Start Repair")).click();
-		Thread.sleep(5000);
+	    driver.findElement(By.linkText("Create Estimate")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.linkText("Continue")).click();
+	    driver.findElement(By.cssSelector(".add-on > .icon-calendar")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.linkText("20")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.linkText("Continue")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.cssSelector(".check")).click();
+	    driver.findElement(By.linkText("Continue")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.linkText("Start Repair")).click();
+	    Thread.sleep(5000);
 		driver.findElement(By.linkText("Repair Complete")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.linkText("Confirm Estimate")).click();
@@ -152,11 +155,18 @@ public class InStore {
 		Thread.sleep(10000);
 		driver.findElement(By.linkText("Send to RMS")).click();
 		Thread.sleep(10000);
+	    
+			}  {
+				 
+	  } 
 
-		} finally {
-			 driver.quit();
-	}
-
-}
+		
+}	
+		 
 	
-}
+
+		
+	
+	
+
+		

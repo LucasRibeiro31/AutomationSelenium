@@ -30,6 +30,9 @@ public class CreateCustomerTest {
 	}
 
 	private void createCustomer(WebDriver driver) throws InterruptedException {
+		
+		try {
+		
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
 
@@ -50,7 +53,7 @@ public class CreateCustomerTest {
 		driver.findElement(By.id("addBtn")).click();
 
 		WebElement modalAddCustomer = new WebDriverWait(driver, 5)
-				.until(ExpectedConditions.elementToBeClickable(By.id("customer-edit-modal")));
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal")));
 
 		modalAddCustomer.findElement(By.id("Customer_first_name")).click();
 		modalAddCustomer.findElement(By.id("Customer_first_name")).sendKeys("lucas");
@@ -67,7 +70,10 @@ public class CreateCustomerTest {
 
 		modalAddCustomer.findElement(By.cssSelector(".show-add")).click();
 		
-		driver.quit();
+		} finally {
+			driver.quit();
 	}
 
+}
+	
 }

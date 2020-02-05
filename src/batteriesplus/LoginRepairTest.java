@@ -30,6 +30,9 @@ public class LoginRepairTest {
 	}
 
 	private void loginrepair(WebDriver driver) throws InterruptedException {
+		
+		try {
+		
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
   
@@ -44,12 +47,19 @@ public class LoginRepairTest {
     passwordField.clear();
     passwordField.sendKeys("123");
     
+    // TODO Set different password to check validation
+    
+    // TODO Set different login to check validation
+    
     driver.findElement(By.id("UserLoginForm_password")).click();
     driver.findElement(By.id("UserLoginForm_password")).click();
     Thread.sleep(10000);
   
-    driver.quit();
+		} finally {
+			driver.quit();
   }
   
   
+}
+	
 }

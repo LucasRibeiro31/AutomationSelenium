@@ -32,6 +32,9 @@ public class EnableSafewareTest {
 	public void enableSafewareTest() {
 		LoginTest.login(driver);
 
+		
+		// Código para fazer mouseover e esperar o elemento aparecer
+		
 		WebElement settingsMenu = driver.findElement(By.cssSelector(".nav a[href^='/settings']"));
 
 		new Actions(driver).moveToElement(settingsMenu).perform();

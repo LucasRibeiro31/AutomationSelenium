@@ -12,27 +12,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class InStore {
+public class InStoreToMailIn {
 
 	@Test
-	public void inStoreChrome() throws InterruptedException {
-		inStore(new ChromeDriver());
+	public void instoretomailinChrome() throws InterruptedException {
+		instoretomailin(new ChromeDriver());
 	}
 
 	
-	public void inStoreFirefox() throws InterruptedException {
-		inStore(new FirefoxDriver());
+	public void instoretomailinFirefox() throws InterruptedException {
+		instoretomailin(new FirefoxDriver());
 	}
 
 	
-	public void inStoreIE() throws InterruptedException {
-		inStore(new InternetExplorerDriver());
+	public void instoretomailin() throws InterruptedException {
+		instoretomailin(new InternetExplorerDriver());
 	}
 
-	private void inStore(WebDriver driver) throws InterruptedException {
+	private void instoretomailin(WebDriver driver) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		
-		try {
 
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1280, 1024));
@@ -51,11 +49,11 @@ public class InStore {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='bpb']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector("#serviceProgram  [data-service-program='1']")).click();
 		Thread.sleep(5000);
 		driver.findElement(By.id("customerSearch")).click();
@@ -69,19 +67,20 @@ public class InStore {
 
 			driver.findElement(By.linkText("Dismiss")).click();
 		}
-		
-		Thread.sleep(2000);
+
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector(".check")).click();
 		Thread.sleep(5000);
 		driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
-		Thread.sleep(8000);
+		Thread.sleep(10000);
 		driver.findElement(By.cssSelector("#new-device-form [data-category-id='508']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='9986']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys("123456");
+		Thread.sleep(5000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys(Keys.ENTER);
 		driver.switchTo().frame(0);
 		driver.findElement(By.cssSelector("p")).click();
@@ -94,7 +93,7 @@ public class InStore {
 		driver.findElement(By.linkText("Continue with Claim")).click();
 		Thread.sleep(10000);
 		driver.findElement(By.linkText("Save & Submit")).click();
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		driver.findElement(By.cssSelector(".control-group:nth-child(2) .radio-inline:nth-child(3) > .required")).click();
 		driver.findElement(By.cssSelector(".control-group:nth-child(7) .radio-inline:nth-child(2) > .required")).click();
 		driver.findElement(By.cssSelector(".control-group:nth-child(9) .radio-inline:nth-child(3) > .required")).click();
@@ -113,50 +112,85 @@ public class InStore {
 		driver.findElement(By.cssSelector(".control-group:nth-child(45) .radio-inline:nth-child(1)")).click();
 		driver.findElement(By.cssSelector(".control-group:nth-child(46) .radio-inline:nth-child(2)")).click();
 		driver.findElement(By.id("customField_80")).click();
+		Thread.sleep(5000);
 		driver.findElement(By.id("customField_80")).sendKeys("ok");
 		Thread.sleep(5000);
 		driver.findElement(By.linkText("Save & Submit")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.id("addBtn")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='38243']")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.cssSelector(".btn-large")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.linkText("Create Estimate")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.linkText("Continue")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".add-on > .icon-calendar")).click();
-		Thread.sleep(2000);
-		 driver.findElement(By.linkText("20")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.linkText("Continue")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector(".check")).click();
+		driver.findElement(By.cssSelector(".btn-icon")).click();
+		driver.findElement(By.cssSelector(".btn-new > .icon-wrench")).click();
+		driver.findElement(By.cssSelector(".trigger-verify-service-program > .image-container")).click();
+		driver.findElement(By.cssSelector(".flex-cell:nth-child(4) > .image-container")).click();
 		driver.findElement(By.linkText("Continue")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.linkText("Start Repair")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.linkText("Repair Complete")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.linkText("Confirm Estimate")).click();
-		Thread.sleep(15000);
-		driver.findElement(By.cssSelector("#claim [href^='/ticket/edit/']")).click(); 
-		Thread.sleep(5000);
-		driver.findElement(By.id("claim-contact-notify-note")).click();
-		driver.findElement(By.id("claim-contact-notify-note")).sendKeys("12");
-		driver.findElement(By.linkText("Contact Notified")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.linkText("Next: Send To RMS")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.linkText("Send to RMS")).click();
-		Thread.sleep(10000);
+	    driver.findElement(By.id("addBtn")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='38243']")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.cssSelector(".btn-large")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.linkText("Create Estimate")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.linkText("Continue")).click();
+	    driver.findElement(By.cssSelector(".add-on > .icon-calendar")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.linkText("20")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.linkText("Continue")).click();
+	    Thread.sleep(5000);
+	    driver.findElement(By.cssSelector(".check")).click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.linkText("Continue")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.id("claim-create-shipment-shipper")).click();
+	    Thread.sleep(2000);
+	    {
+	      WebElement dropdown = driver.findElement(By.id("claim-create-shipment-shipper"));
+	      dropdown.findElement(By.xpath("//option[. = 'UPS']")).click();
+	      Thread.sleep(2000);
+	    }
+	    driver.findElement(By.id("claim-create-shipment-shipper")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.id("claim-create-shipment-method")).click();
+	    {
+	      WebElement dropdown = driver.findElement(By.id("claim-create-shipment-method"));
+	      dropdown.findElement(By.xpath("//option[. = 'Standard']")).click();
+	      
+	    }
+	    driver.findElement(By.id("claim-create-shipment-method")).click(); 
+	    Thread.sleep(10000);
+	    driver.findElement(By.xpath("//*[@id=\"claim-walkthrough-modal\"]/div[3]/a[1]")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.cssSelector("#claim [href^='/ticket/edit/']")).click();
+	    Thread.sleep(10000);
+	    driver.findElement(By.id("claim-create-shipment-shipper")).click();
+	    Thread.sleep(2000);
+	    {
+	      WebElement dropdown = driver.findElement(By.id("claim-create-shipment-shipper"));
+	      dropdown.findElement(By.xpath("//option[. = 'UPS']")).click();
+	      Thread.sleep(2000);
+	    }
+	    driver.findElement(By.id("claim-create-shipment-shipper")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.id("claim-create-shipment-method")).click();
+	    {
+	      WebElement dropdown = driver.findElement(By.id("claim-create-shipment-method"));
+	      dropdown.findElement(By.xpath("//option[. = 'Standard']")).click();
+	      
+	    }
+	    driver.findElement(By.id("claim-create-shipment-method")).click(); 
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("//*[@id=\"claim-walkthrough-modal\"]/div[3]/a[2]")).click();
+	    Thread.sleep(8000);
+	    driver.findElement(By.linkText("View Ticket")).click();
+	    Thread.sleep(10000);
+	    
+			}  {
+				 
+	  } 
 
-		} finally {
-			 driver.quit();
+		
+		 		 
+		 
 	}
 
-}
-	
-}

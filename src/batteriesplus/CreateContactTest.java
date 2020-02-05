@@ -31,6 +31,8 @@ import org.openqa.selenium.interactions.Actions;
 	}
 
 	private void createContact(WebDriver driver) throws InterruptedException {
+		
+		try {
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
     
@@ -66,12 +68,14 @@ import org.openqa.selenium.interactions.Actions;
       builder.moveToElement(element).clickAndHold().perform();
       Thread.sleep(5000);
     }
-    {
+    
     	driver.findElement(By.cssSelector(".btn > .icon-plus")).click();
     	Thread.sleep(20000);
-    	
-    	driver.quit();
+  	
+    	} finally {
+		driver.quit();
     }
+		}
     
-  }
+  
 }
