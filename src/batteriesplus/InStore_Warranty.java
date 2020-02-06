@@ -33,8 +33,6 @@ public class InStore_Warranty {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
-		String currentURL = driver.getPageSource();
-		System.out.println(currentURL);
 		driver.manage().window().setSize(new Dimension(1280, 1024));
 
 		WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
@@ -51,19 +49,18 @@ public class InStore_Warranty {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='bpb']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#serviceProgram  [data-service-program='1']")).click();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		driver.findElement(By.id("customerSearch")).click();
-		Thread.sleep(5000);
 		driver.findElement(By.id("customerSearch")).sendKeys("lucas");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
-		Thread.sleep(10000);
+		Thread.sleep(8000);
 
 		{
 
@@ -77,9 +74,9 @@ public class InStore_Warranty {
 		driver.findElement(By.cssSelector(".btn-primary > .icon-ok")).click();
 		Thread.sleep(7000);
 		driver.findElement(By.cssSelector("#new-device-form [data-category-id='508']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='9986']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys("123456");
 		Thread.sleep(1000);
 		driver.findElement(By.id("claim-device-serial")).sendKeys(Keys.ENTER);

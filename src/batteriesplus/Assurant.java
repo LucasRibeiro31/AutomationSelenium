@@ -75,7 +75,7 @@ public class Assurant {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 
 		driver.findElement(By.linkText("0001")).click();
 		Thread.sleep(2000);
@@ -89,18 +89,16 @@ public class Assurant {
 		}
 
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name= 'assurant']")).click();
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		driver.findElement(By.id("claimNumber")).click();
-		Thread.sleep(4000);
 		driver.findElement(By.id("claimNumber")).sendKeys("snstub__PPNN-151");
-		Thread.sleep(4000);
 		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")).click();
 		Thread.sleep(4000);
 	}
@@ -109,9 +107,9 @@ public class Assurant {
 	private void assurant(WebDriver driver) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		try {
+			
 			checkinWithAssurant(driver);
-			
-			
+					
 			driver.findElement(By.linkText("Yes")).click();
 			Thread.sleep(8000);
 			driver.findElement(By.linkText("Continue with Claim")).click();
@@ -202,7 +200,9 @@ public class Assurant {
 	}
 
 	private void AssurantError(WebDriver driver) throws InterruptedException {
+		
 		checkinWithAssurant(driver);
+		
 		driver.findElement(By.linkText("No Match")).click();
 		driver.findElement(By.cssSelector(".trigger-claim-decline:nth-child(2)")).click();
 		driver.findElement(By.name("claimCannotRepairReason")).click();
