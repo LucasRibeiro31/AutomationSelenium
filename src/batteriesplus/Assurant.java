@@ -96,7 +96,7 @@ public class Assurant {
 		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name= 'assurant']")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.id("claimNumber")).click();
-		driver.findElement(By.id("claimNumber")).sendKeys("snstub__PPNN-151");
+		driver.findElement(By.id("claimNumber")).sendKeys("snstub__PPNN-153");
 		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")).click();
