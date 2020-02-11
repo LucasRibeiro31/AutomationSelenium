@@ -30,6 +30,8 @@ import java.net.URL;
 
 public class SquareTrade {
 
+	
+	@Test
 	public void SquareTradeChrome() throws InterruptedException {
 		checkinSquareTrade(new ChromeDriver());
 	}
@@ -44,7 +46,7 @@ public class SquareTrade {
 
 	// Testing Error ( Customer Declined )
 
-	@Test
+	
 	public void SquareErrorChrome() throws InterruptedException {
 		SquareError(new ChromeDriver());
 
@@ -79,20 +81,38 @@ public class SquareTrade {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name='squaretrade']")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.id("claimNumber")).click();
-		driver.findElement(By.id("claimNumber")).sendKeys("stub_lucas207");
-		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")).click();
-		Thread.sleep(2000);
+		
+		
+		WebElement btnCheckinNewModal = new WebDriverWait(driver, 5).until(ExpectedConditions
+				.elementToBeClickable(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")));
 
+		btnCheckinNewModal.click();
+		
+		
+		WebElement btnAssurant = new WebDriverWait(driver, 5).until(ExpectedConditions
+				.elementToBeClickable(By.cssSelector("#serviceAuthorizers [data-integrated-name='squaretrade']")));
+
+		btnAssurant.click();
+		
+				
+	
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("claimNumber")).click();
+		driver.findElement(By.id("claimNumber")).sendKeys("stub_lucas217");
+		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
+		
+			
+		
+		
+		WebElement btnContact = new WebDriverWait(driver, 5).until(ExpectedConditions
+				.elementToBeClickable(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")));
+
+		btnContact.click();
+		
+			
 	}
 
 	private void checkinSquareTrade(WebDriver driver) throws InterruptedException {
@@ -101,20 +121,49 @@ public class SquareTrade {
 		try {
 
 			checkinWithSquareTrade(driver);
+			
+			WebElement btnYes = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Yes")));
 
-			driver.findElement(By.linkText("Yes")).click();
+			btnYes.click();
+			
+			
+			WebElement btnContinueClaim = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Continue with Claim")));
+
+			btnContinueClaim.click();
+			
+				
+	
 			Thread.sleep(2000);
-			driver.findElement(By.linkText("Continue with Claim")).click();
-			Thread.sleep(2000);
+			
 			driver.findElement(By.cssSelector(".check")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.linkText("Continue")).click();
-			Thread.sleep(3000);
-			driver.findElement(By.cssSelector("#new-device-form [data-category-id='452']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='10006']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.linkText("Continue with Claim")).click();
+			
+			
+			WebElement btnContinue = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Continue")));
+
+			btnContinue.click();
+			
+			
+			WebElement btnSamsung = new WebDriverWait(driver, 10).until(
+					ExpectedConditions.elementToBeClickable(By.cssSelector("#new-device-form [data-category-id='452']")));
+
+			btnSamsung.click();
+
+			WebElement btnS9 = new WebDriverWait(driver, 10).until(ExpectedConditions
+					.elementToBeClickable(By.cssSelector("#new-device-form [data-catalogitem-id='10006']")));
+			
+			btnS9.click();
+			
+			
+			WebElement btnContinueClaim1 = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Continue with Claim")));
+
+			btnContinueClaim1.click();
+			
+						
+			
 			driver.switchTo().frame(0);
 			driver.findElement(By.cssSelector("p")).click();
 			{
@@ -123,11 +172,27 @@ public class SquareTrade {
 						element);
 			}
 			driver.switchTo().defaultContent();
-			driver.findElement(By.linkText("Continue with Claim")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.linkText("Save & Submit")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.name("87")).click();
+			
+			
+			WebElement btnContinueClaim2 = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Continue with Claim")));
+
+			btnContinueClaim2.click();
+			
+			
+			WebElement btnSaveSubmit = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Save & Submit")));
+
+			btnSaveSubmit.click();
+			
+			
+			WebElement btnName = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.name("87")));
+
+			btnName.click();
+			
+				
+			
 			driver.findElement(By.cssSelector(".control-group:nth-child(4) .radio-inline:nth-child(2) > .required"))
 					.click();
 			driver.findElement(By.cssSelector(".control-group:nth-child(6) .radio-inline:nth-child(2) > .required"))
@@ -164,29 +229,75 @@ public class SquareTrade {
 					.click();
 			driver.findElement(By.cssSelector(".control-group:nth-child(47) .radio-inline:nth-child(3) > .required"))
 					.click();
+			
+			
 			driver.findElement(By.id("customField_80")).click();
 			driver.findElement(By.id("customField_80")).sendKeys("complete");
-			driver.findElement(By.linkText("Save & Submit")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.id("addBtn")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.cssSelector("#ticket-item-form [data-catalogitem-id='34438']")).click();
-			Thread.sleep(1000);
-			driver.findElement(By.cssSelector(".btn-large")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.linkText("Create Estimate")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.linkText("Start Repair")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.linkText("Repair Complete")).click();
-			Thread.sleep(10000);
+			
+			
+			
+			WebElement btnSaveSubmit1 = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Save & Submit")));
+
+			btnSaveSubmit1.click();
+			
+			
+			
+			WebElement btnaddBtn = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.id("addBtn")));
+
+			btnaddBtn.click();
+			
+			
+			WebElement btnRepair = new WebDriverWait(driver, 10).until(ExpectedConditions
+					.elementToBeClickable(By.cssSelector("#ticket-item-form [data-catalogitem-id='34438']")));
+
+			btnRepair.click();
+
+			WebElement btnbtnlarge = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-large")));
+
+			btnbtnlarge.click();
+
+			WebElement btnCreateEstimate = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Create Estimate")));
+
+			btnCreateEstimate.click();
+			
+									
+			
+			WebElement btnStartRepair = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Start Repair")));
+
+			btnStartRepair.click();
+
+			WebElement btnRepairComplete = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Repair Complete")));
+
+			btnRepairComplete.click();
+			
+			Thread.sleep(6000);
+			
+			
 			driver.findElement(By.id("claim-contact-notify-note")).click();
 			driver.findElement(By.id("claim-contact-notify-note")).sendKeys("12");
-			driver.findElement(By.linkText("Contact Notified")).click();
-			Thread.sleep(12000);
-			driver.findElement(By.linkText("Next: Send To RMS")).click();
-			Thread.sleep(8000);
+			
+			
+			WebElement btnContact = new WebDriverWait(driver, 10)
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Contact Notified")));
+
+			btnContact.click();
+			
+			
+			
+			Thread.sleep(10000);
+			driver.findElement(By.xpath("//*[@id=\"claim\"]/div[2]/div[1]/div[4]/a")).click();
+			Thread.sleep(3000);
 			driver.findElement(By.linkText("Send to RMS")).click();
+
+
+		
+
 
 		} finally {
 			driver.quit();

@@ -157,6 +157,8 @@ public class InStore {
 		driver.findElement(By.linkText("Save & Submit")).click();
 
 		Thread.sleep(8000);
+		
+		
 		WebElement btnaddBtn = new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.elementToBeClickable(By.id("addBtn")));
 
