@@ -30,7 +30,7 @@ import java.net.URL;
 
 public class Assurant {
 
-	
+	@Test
 	public void AssurantChrome() throws InterruptedException {
 		assurant(new ChromeDriver());
 	}
@@ -44,7 +44,7 @@ public class Assurant {
 	}
 
 	// Testing Error ( Customer Declined )
-	@Test
+	
 	public void AssurantErrorChrome() throws InterruptedException {
 		AssurantError(new ChromeDriver());
 	}
@@ -75,32 +75,49 @@ public class Assurant {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		driver.findElement(By.linkText("0001")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.linkText("Switch Location")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.id("location")).click();
 		{
 			WebElement dropdown = driver.findElement(By.id("location"));
 			dropdown.findElement(By.xpath("//option[. = '0501']")).click();
-			Thread.sleep(8000);
+			Thread.sleep(3000);
+			
 		}
 
+		
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(2000);
+		
+				
+	   WebElement btnCheckinNewModal = new WebDriverWait(driver, 5).until(
+				ExpectedConditions.elementToBeClickable(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")));
 
-		driver.findElement(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal']")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector("#serviceAuthorizers [data-integrated-name= 'assurant']")).click();
-		Thread.sleep(1000);
+			btnCheckinNewModal.click();			
+		
+				
+		
+		WebElement btnAssurant = new WebDriverWait(driver, 5).until(
+				ExpectedConditions.elementToBeClickable(By.cssSelector("#serviceAuthorizers [data-integrated-name= 'assurant']")));
+
+			btnAssurant.click();
+			
+		//	Thread.sleep(2000);
+			
 		driver.findElement(By.id("claimNumber")).click();
-		driver.findElement(By.id("claimNumber")).sendKeys("snstub__PPNN-153");
+		driver.findElement(By.id("claimNumber")).sendKeys("snstub__PPNN-184");
 		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")).click();
-		Thread.sleep(4000);
+		
+		
+		WebElement btnBegin = new WebDriverWait(driver, 5).until(
+				ExpectedConditions.elementToBeClickable(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")));
+
+			btnBegin.click();
+				
+		
 	}
 
 	// @SuppressWarnings("null")
@@ -110,23 +127,58 @@ public class Assurant {
 			
 			checkinWithAssurant(driver);
 					
-			driver.findElement(By.linkText("Yes")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.linkText("Continue with Claim")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.cssSelector(".check")).click();
-			Thread.sleep(4000);
-			driver.findElement(By.linkText("Continue")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.cssSelector("#new-device-form [data-category-id='458']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.cssSelector("#new-device-form [data-catalogitem-id='10527']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.linkText("Continue with Claim")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.linkText("Save & Submit")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.name("87")).click();
+			// need to run twice ( Yes button sometimes doesn't click )
+			WebElement btnYes = new WebDriverWait(driver, 8).until(
+					ExpectedConditions.elementToBeClickable(By.linkText("Yes")));
+
+				btnYes.click();
+				
+																	
+	
+			WebElement btnWithClaim = new WebDriverWait(driver, 10).until(
+					ExpectedConditions.elementToBeClickable(By.linkText("Continue with Claim")));
+
+				btnWithClaim.click();
+				
+				
+		    WebElement btnCheck = new WebDriverWait(driver, 5).until(
+					ExpectedConditions.elementToBeClickable(By.cssSelector(".check")));
+
+		       btnCheck.click();			
+				
+		  
+		    WebElement btnContinue = new WebDriverWait(driver, 5).until(
+			    	ExpectedConditions.elementToBeClickable(By.linkText("Continue")));
+
+		      btnContinue.click();		
+		       
+		       
+		    WebElement btnSamsung = new WebDriverWait(driver, 5).until(
+			    	ExpectedConditions.elementToBeClickable(By.cssSelector("#new-device-form [data-category-id='458']")));
+
+		     btnSamsung.click();		   
+						
+		
+		     WebElement btnS9 = new WebDriverWait(driver, 5).until(
+				    	ExpectedConditions.elementToBeClickable(By.cssSelector("#new-device-form [data-catalogitem-id='10527']")));
+
+			 btnS9.click();
+ 
+			
+			 WebElement btnContinueClaim = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.linkText("Continue with Claim")));
+
+			 btnContinueClaim.click();  
+			 
+			 Thread.sleep(8000);
+			 
+			 driver.findElement(By.linkText("Save & Submit")).click();
+			 
+
+			 Thread.sleep(8000);
+				driver.findElement(By.name("87")).click();
+				
+			
 			driver.findElement(By.cssSelector(".control-group:nth-child(4) .radio-inline:nth-child(2) > .required"))
 					.click();
 			driver.findElement(By.cssSelector(".control-group:nth-child(6) .radio-inline:nth-child(2) > .required"))
@@ -170,30 +222,75 @@ public class Assurant {
 			driver.findElement(By.id("customField_80")).click();
 			driver.findElement(By.id("customField_80")).sendKeys("n/a");
 			driver.findElement(By.linkText("Save & Submit")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.id("addBtn")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.xpath("//*[@id=\"ticket-item-form\"]/fieldset/div[2]/div[2]/div/div/div/div[2]"))
-					.click();
-			Thread.sleep(5000);
-			driver.findElement(By.cssSelector(".btn-large")).click();
-			Thread.sleep(3000);
-			driver.findElement(By.linkText("Create Estimate")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.xpath("//*[@id=\"claim-walkthrough-modal\"]/div[3]/a[2]")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.cssSelector("#claim [href^='/ticket/edit/']")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.linkText("Start Repair")).click();
-			Thread.sleep(5000);
-			driver.findElement(By.linkText("Repair Complete")).click();
-			Thread.sleep(10000);
-			driver.findElement(By.linkText("Contact Notified")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.linkText("Next: Send To RMS")).click();
-			Thread.sleep(8000);
-			driver.findElement(By.linkText("Send to RMS")).click();
+			
+			
+			 WebElement btnaddBtn = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.id("addBtn")));
 
+			 btnaddBtn.click(); 
+			
+			 
+			 WebElement btnrepair = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"ticket-item-form\"]/fieldset/div[2]/div[2]/div/div/div/div[2]")));
+
+			 btnrepair.click(); 
+			 
+			
+			 WebElement btnbtnlarge = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-large")));
+
+			 btnbtnlarge.click(); 
+			
+			
+			 WebElement btnCreateEstimate = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.linkText("Create Estimate")));
+
+			 btnCreateEstimate.click(); 
+			 
+			 
+			 WebElement btnClaim2 = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"claim-walkthrough-modal\"]/div[3]/a[2]")));
+
+			 btnClaim2.click(); 
+			
+			
+			 WebElement btnClaim3 = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.cssSelector("#claim [href^='/ticket/edit/']")));
+
+			 btnClaim3.click(); 
+			 
+			
+			 WebElement btnStartRepair = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.linkText("Start Repair")));
+
+			 btnStartRepair.click(); 
+		
+			 
+			 WebElement btnRepairComplete = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.linkText("Repair Complete")));
+
+			 btnRepairComplete.click(); 
+			 
+			 Thread.sleep(8000);
+			 
+			 driver.findElement(By.id("claim-contact-notify-note")).click();
+			 driver.findElement(By.id("claim-contact-notify-note")).sendKeys("12");
+			
+			 
+			 WebElement btnContact = new WebDriverWait(driver, 10).until(
+				    	ExpectedConditions.elementToBeClickable(By.linkText("Contact Notified")));
+
+			 btnContact.click(); 
+			 
+			 Thread.sleep(10000);
+			 driver.findElement(By.xpath("//*[@id=\"claim\"]/div[2]/div[1]/div[4]/a")).click();
+
+			 			 	
+			 Thread.sleep(8000);
+			 driver.findElement(By.linkText("Send to RMS")).click();
+			 
+		
+			
 		} finally {
 			driver.quit();
 		}

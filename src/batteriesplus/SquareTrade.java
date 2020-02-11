@@ -28,13 +28,8 @@ import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
-
-
-
 public class SquareTrade {
 
-	
 	public void SquareTradeChrome() throws InterruptedException {
 		checkinSquareTrade(new ChromeDriver());
 	}
@@ -47,29 +42,26 @@ public class SquareTrade {
 		checkinSquareTrade(new InternetExplorerDriver());
 	}
 
-	
-		
 	// Testing Error ( Customer Declined )
-	
+
 	@Test
 	public void SquareErrorChrome() throws InterruptedException {
 		SquareError(new ChromeDriver());
-		
-		}
+
+	}
 
 	public void SquareErrorFirefox() throws InterruptedException {
 		SquareError(new FirefoxDriver());
-		
-		}
+
+	}
 
 	public void SquareErrorIE() throws InterruptedException {
 		SquareError(new InternetExplorerDriver());
-		
-		}
-	
-			
+
+	}
+
 	private void checkinWithSquareTrade(WebDriver driver) throws InterruptedException {
-					
+
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
 
@@ -86,7 +78,7 @@ public class SquareTrade {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
-		
+
 		Thread.sleep(3000);
 		driver.findElement(By.linkText("Check In")).click();
 		Thread.sleep(1000);
@@ -100,18 +92,16 @@ public class SquareTrade {
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("#claimPreviewModal [href^='/ticket/edit/']")).click();
 		Thread.sleep(2000);
-		
+
 	}
-	
+
 	private void checkinSquareTrade(WebDriver driver) throws InterruptedException {
-		JavascriptExecutor js = (JavascriptExecutor) driver ;
-		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
 		try {
-			
-		
+
 			checkinWithSquareTrade(driver);
-			
-			
+
 			driver.findElement(By.linkText("Yes")).click();
 			Thread.sleep(2000);
 			driver.findElement(By.linkText("Continue with Claim")).click();
@@ -138,30 +128,44 @@ public class SquareTrade {
 			driver.findElement(By.linkText("Save & Submit")).click();
 			Thread.sleep(8000);
 			driver.findElement(By.name("87")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(4) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(6) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(10) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.name("42")).click();
-		    driver.findElement(By.name("43")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(17) .radio-inline:nth-child(3) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(19) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(21) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(23) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.name("76")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(30) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(33) .radio-inline:nth-child(3)")).click();
-		    driver.findElement(By.name("61")).click();
-		    driver.findElement(By.id("customField_62")).click();
-		    driver.findElement(By.id("customField_62")).sendKeys("123");
-		    driver.findElement(By.cssSelector(".control-group:nth-child(38) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(41) .radio-inline:nth-child(2)")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(42) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(43) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(45) .radio-inline:nth-child(2) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(46) .radio-inline:nth-child(3) > .required")).click();
-		    driver.findElement(By.cssSelector(".control-group:nth-child(47) .radio-inline:nth-child(3) > .required")).click();
-		    driver.findElement(By.id("customField_80")).click();
-		    driver.findElement(By.id("customField_80")).sendKeys("complete");
+			driver.findElement(By.cssSelector(".control-group:nth-child(4) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(6) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(10) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.name("42")).click();
+			driver.findElement(By.name("43")).click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(17) .radio-inline:nth-child(3) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(19) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(21) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(23) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.name("76")).click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(30) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(33) .radio-inline:nth-child(3)")).click();
+			driver.findElement(By.name("61")).click();
+			driver.findElement(By.id("customField_62")).click();
+			driver.findElement(By.id("customField_62")).sendKeys("123");
+			driver.findElement(By.cssSelector(".control-group:nth-child(38) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(41) .radio-inline:nth-child(2)")).click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(42) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(43) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(45) .radio-inline:nth-child(2) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(46) .radio-inline:nth-child(3) > .required"))
+					.click();
+			driver.findElement(By.cssSelector(".control-group:nth-child(47) .radio-inline:nth-child(3) > .required"))
+					.click();
+			driver.findElement(By.id("customField_80")).click();
+			driver.findElement(By.id("customField_80")).sendKeys("complete");
 			driver.findElement(By.linkText("Save & Submit")).click();
 			Thread.sleep(10000);
 			driver.findElement(By.id("addBtn")).click();
@@ -186,32 +190,24 @@ public class SquareTrade {
 
 		} finally {
 			driver.quit();
-			
+
 		}
-		
+
+	}
+
+	private void SquareError(WebDriver driver) throws InterruptedException {
+
+		checkinWithSquareTrade(driver);
+
+		driver.findElement(By.linkText("No Match")).click();
+		driver.findElement(By.cssSelector(".trigger-claim-decline:nth-child(2)")).click();
+		driver.findElement(By.name("claimCannotRepairReason")).click();
+		{
+			WebElement dropdown = driver.findElement(By.name("claimCannotRepairReason"));
+			dropdown.findElement(By.xpath("//option[. = 'Customer Declined Due to Price']")).click();
+		}
+		driver.findElement(By.name("claimCannotRepairReason")).click();
+		driver.findElement(By.linkText("Cancel Claim")).click();
+	}
+
 }
-		
-		private void SquareError (WebDriver driver) throws InterruptedException {
-			
-			checkinWithSquareTrade(driver);
-
-			driver.findElement(By.linkText("No Match")).click();
-		    driver.findElement(By.cssSelector(".trigger-claim-decline:nth-child(2)")).click();
-		    driver.findElement(By.name("claimCannotRepairReason")).click();
-		    {
-		      WebElement dropdown = driver.findElement(By.name("claimCannotRepairReason"));
-		      dropdown.findElement(By.xpath("//option[. = 'Customer Declined Due to Price']")).click();
-		    }
-		    driver.findElement(By.name("claimCannotRepairReason")).click();
-		    driver.findElement(By.linkText("Cancel Claim")).click();
-		  }
-		
-		}
-		
-	
-
-		
-		
-		
-
-	
