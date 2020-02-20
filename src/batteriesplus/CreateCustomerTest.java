@@ -19,19 +19,19 @@ public class CreateCustomerTest {
 		createCustomer(new ChromeDriver());
 	}
 	
-	@Test
+	
 	public void createCustomerFirefox() throws InterruptedException {
 		createCustomer(new FirefoxDriver());
 	}
 	
-	@Test
+
 	public void createCustomerIE() throws InterruptedException {
 		createCustomer(new InternetExplorerDriver());
 	}
 
 	private void createCustomer(WebDriver driver) throws InterruptedException {
 		
-		try {
+	
 		
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
@@ -52,28 +52,31 @@ public class CreateCustomerTest {
 		driver.findElement(By.linkText("Customers")).click();
 		driver.findElement(By.id("addBtn")).click();
 
-		WebElement modalAddCustomer = new WebDriverWait(driver, 5)
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ticketCheckin [href='#ticketCheckinNewModal")));
-
-		modalAddCustomer.findElement(By.id("Customer_first_name")).click();
-		modalAddCustomer.findElement(By.id("Customer_first_name")).sendKeys("lucas");
-		modalAddCustomer.findElement(By.id("Customer_last_name")).click();
-		modalAddCustomer.findElement(By.id("Customer_last_name")).sendKeys("avon");
-		modalAddCustomer.findElement(By.id("Customer_pri_phone")).click();
-		modalAddCustomer.findElement(By.id("Customer_pri_phone")).sendKeys("999999999999");
-
-		WebElement element = modalAddCustomer.findElement(By.id("Customer_alt_phone"));
-		Actions builder = new Actions(driver);
-		builder.moveToElement(element).clickAndHold().perform();
-
-		Thread.sleep(1000);
-
-		modalAddCustomer.findElement(By.cssSelector(".show-add")).click();
 		
-		} finally {
-			driver.quit();
-	}
+		Thread.sleep(4000);
+		
+		 driver.findElement(By.id("Customer_first_name")).click();
+		 driver.findElement(By.id("Customer_first_name")).sendKeys("cuca");
+		 driver.findElement(By.id("Customer_last_name")).click();
+		 driver.findElement(By.id("Customer_last_name")).sendKeys("beludo");
+		 driver.findElement(By.id("Customer_pri_phone")).click();
+		 driver.findElement(By.id("Customer_pri_phone")).sendKeys("989898989");
+		
+		 Thread.sleep(2000);
+		    {
+		      WebElement element = driver.findElement(By.id("Customer_alt_phone"));
+		      Actions builder = new Actions(driver);
+		      builder.moveToElement(element).clickAndHold().perform();
+		      Thread.sleep(5000);
+		    }
+		    
+		    	driver.findElement(By.cssSelector(".btn > .icon-plus")).click();
+		    	
+		  	
+		    	
+		    }
+				
 
 }
-	
-}
+
+

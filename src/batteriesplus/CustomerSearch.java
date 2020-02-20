@@ -15,12 +15,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CustomerSearch {
 
-	
+	@Test
 	public void customerSearchChrome() throws InterruptedException {
 		customerSearch(new ChromeDriver());
 	}
 	
-	@Test
+	
 	public void customerSearchFirefox() throws InterruptedException {
 		customerSearch(new FirefoxDriver());
 	}
@@ -47,16 +47,28 @@ public class CustomerSearch {
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.cssSelector(".btn-new")).click();
+		
 		driver.findElement(By.linkText("Check In")).click();
-		Thread.sleep(5000);
-		driver.findElement(By.cssSelector("#ticketCheckin [href='#customerSearchModal']")).click();
-		Thread.sleep(5000);
+		
+		WebElement btnSearch = new WebDriverWait(driver, 10)
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#ticketCheckin [href='#customerSearchModal']")));
+
+		btnSearch.click();
+		
+				
+		Thread.sleep(2000);
 		driver.findElement(By.id("customerSearchModalInput")).click();
 		driver.findElement(By.id("customerSearchModalInput")).sendKeys(Keys.DOWN);
 		driver.findElement(By.id("customerSearchModalInput")).sendKeys("pozzi");
 		driver.findElement(By.id("customerSearchModalInput")).sendKeys(Keys.ENTER);
-		Thread.sleep(10000);
 		
-		driver.quit();
+		WebElement btnSearch1 = new WebDriverWait(driver, 10)
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#customerSearchModal [href= '/customer']")));
+
+		btnSearch1.click();
+		
+			
+				
+		
 	}
 }

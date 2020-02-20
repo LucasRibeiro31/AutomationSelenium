@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
@@ -20,19 +22,20 @@ import org.openqa.selenium.interactions.Actions;
 		createContact(new ChromeDriver());
 	}
 	
-	@Test
+	
 	public void createContactFirefox() throws InterruptedException {
 		createContact(new FirefoxDriver());
 	}
 	
-	@Test
+	
 	public void createContactIE() throws InterruptedException {
 		createContact(new InternetExplorerDriver());
 	}
 
 	private void createContact(WebDriver driver) throws InterruptedException {
 		
-		try {
+	
+			
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
     
@@ -49,19 +52,32 @@ import org.openqa.selenium.interactions.Actions;
     
     driver.findElement(By.id("UserLoginForm_password")).click();
     driver.findElement(By.id("UserLoginForm_password")).click();
+    
+    
+    
+    WebElement btnnew = new WebDriverWait(driver, 10)
+			.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-new")));
 
-    Thread.sleep(5000);
-    driver.findElement(By.cssSelector(".btn-new")).click();
+	btnnew.click();
+    
+    
+    
     driver.findElement(By.linkText("Opportunities")).click();
-    driver.findElement(By.id("addBtn")).click();
-    Thread.sleep(5000);
+    
+    WebElement btnadd = new WebDriverWait(driver, 10)
+			.until(ExpectedConditions.elementToBeClickable(By.id("addBtn")));
+
+	btnadd.click();
+       
+          
+    Thread.sleep(4000);
     driver.findElement(By.id("Customer_first_name")).click();
-    driver.findElement(By.id("Customer_first_name")).sendKeys("lucas");
+    driver.findElement(By.id("Customer_first_name")).sendKeys("cuca");
     driver.findElement(By.id("Customer_last_name")).click();
-    driver.findElement(By.id("Customer_last_name")).sendKeys("costaaa");
+    driver.findElement(By.id("Customer_last_name")).sendKeys("beludo");
     driver.findElement(By.id("Customer_pri_phone")).click();
     driver.findElement(By.id("Customer_pri_phone")).sendKeys("989898989");
-    Thread.sleep(5000);
+    Thread.sleep(2000);
     {
       WebElement element = driver.findElement(By.id("Customer_alt_phone"));
       Actions builder = new Actions(driver);
@@ -70,12 +86,11 @@ import org.openqa.selenium.interactions.Actions;
     }
     
     	driver.findElement(By.cssSelector(".btn > .icon-plus")).click();
-    	Thread.sleep(20000);
+    	
   	
-    	} finally {
-		driver.quit();
+    	
     }
 		}
     
   
-}
+
