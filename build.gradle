@@ -1,0 +1,23 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation('junit:junit:4.10')
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+	        events "passed", "skipped", "failed"
+	}
+ 	systemProperties = [
+    	'junit.jupiter.execution.parallel.enabled': 'true',
+	        'junit.jupiter.execution.parallel.mode.default': 'concurrent'
+	]
+}
