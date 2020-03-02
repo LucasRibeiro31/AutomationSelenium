@@ -31,7 +31,7 @@ import java.net.URL;
 public class SquareTrade {
 
 	
-	@Test
+	
 	public void SquareTradeChrome() throws InterruptedException {
 		checkinSquareTrade(new ChromeDriver());
 	}
@@ -46,7 +46,7 @@ public class SquareTrade {
 
 	// Testing Error ( Customer Declined )
 
-	
+	@Test
 	public void SquareErrorChrome() throws InterruptedException {
 		SquareError(new ChromeDriver());
 
@@ -101,7 +101,7 @@ public class SquareTrade {
 		Thread.sleep(1000);
 		
 		driver.findElement(By.id("claimNumber")).click();
-		driver.findElement(By.id("claimNumber")).sendKeys("stub_lucas217");
+		driver.findElement(By.id("claimNumber")).sendKeys("stub_lucas218");
 		driver.findElement(By.cssSelector(".claim-number-submit:nth-child(3)")).click();
 		
 			

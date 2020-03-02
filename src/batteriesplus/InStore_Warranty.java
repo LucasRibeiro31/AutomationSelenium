@@ -220,7 +220,8 @@ public class InStore_Warranty {
 				.until(ExpectedConditions.elementToBeClickable(By.linkText("Confirm Estimate")));
 
 		btnConfirm.click();
-
+		
+		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@id=\"claim\"]/div[2]/div[1]/div[4]/a")).click();
 
 		Thread.sleep(5000);
