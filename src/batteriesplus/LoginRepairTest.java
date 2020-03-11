@@ -45,18 +45,18 @@ public class LoginRepairTest {
 
 		try {
 
-			driver.get("https://batteriesplus-uat.repairq.io/site/login");
+			driver.get("http://lucas.rq.test/site/login");
 			driver.manage().window().setSize(new Dimension(1176, 743));
 
 			WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
 			usernameField.click();
 			usernameField.clear();
-			usernameField.sendKeys("l.costa@cinq.com.br");
+			usernameField.sendKeys("admin");
 
 			WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
 			passwordField.click();
 			passwordField.clear();
-			passwordField.sendKeys("123");
+			passwordField.sendKeys("outono123");
 
 			// TODO Set different password to check validation
 
@@ -72,18 +72,18 @@ public class LoginRepairTest {
 
 	private void WrongLogin(WebDriver driver) throws InterruptedException {
 
-		driver.get("https://batteriesplus-uat.repairq.io/site/login");
+		driver.get("http://lucas.rq.test/site/login");
 		driver.manage().window().setSize(new Dimension(1176, 743));
 
 		WebElement usernameField = driver.findElement(By.id("UserLoginForm_username"));
 		usernameField.click();
 		usernameField.clear();
-		usernameField.sendKeys("l.costa@cinq.combr");
+		usernameField.sendKeys("admin");
 
 		WebElement passwordField = driver.findElement(By.id("UserLoginForm_password"));
 		passwordField.click();
 		passwordField.clear();
-		passwordField.sendKeys("123");
+		passwordField.sendKeys("outono123");
 
 		driver.findElement(By.id("UserLoginForm_password")).click();
 		driver.findElement(By.id("UserLoginForm_password")).click();

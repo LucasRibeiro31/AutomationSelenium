@@ -66,13 +66,16 @@ public class InStore_Warranty {
 
 		btnInStore.click();
 
-		Thread.sleep(3000);
-
+		Thread.sleep(1000);
 		driver.findElement(By.id("customerSearch")).click();
 		driver.findElement(By.id("customerSearch")).sendKeys("lucas");
+		
+		
 
-		Thread.sleep(5000);
-		driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
+		WebElement btnName = new WebDriverWait(driver, 5).until(
+				ExpectedConditions.elementToBeClickable(By.cssSelector("#customer-search-modal .ajax-suggestion-list .ui-menu-item:first-of-type a")));
+
+		btnName.click();
 
 		Thread.sleep(8000);
 

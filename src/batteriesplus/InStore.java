@@ -11,26 +11,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InStore {
 
-	@Test
+	
 	public void inStoreChrome() throws InterruptedException {
 		inStore(new ChromeDriver());
 	}
-
+	@Test
 	public void inStoreFirefox() throws InterruptedException {
 		inStore(new FirefoxDriver());
 	}
-
+	
 	public void inStoreIE() throws InterruptedException {
 		inStore(new InternetExplorerDriver());
 	}
 
 	private void inStore(WebDriver driver) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Actions actions = new Actions(driver);
 
 		driver.get("https://batteriesplus-uat.repairq.io/site/login");
 		driver.manage().window().setSize(new Dimension(1280, 1024));
@@ -68,10 +70,15 @@ public class InStore {
 		Thread.sleep(1000);
 		driver.findElement(By.id("customerSearch")).click();
 		driver.findElement(By.id("customerSearch")).sendKeys("lucas");
-		Thread.sleep(4000);
-		driver.findElement(By.xpath("//*[@id=\"customer-search-modal\"]/ul/li[1]/a")).click();
-		Thread.sleep(8000);
+		
+		
 
+		WebElement btnName = new WebDriverWait(driver, 5).until(
+				ExpectedConditions.elementToBeClickable(By.cssSelector("#customer-search-modal .ajax-suggestion-list .ui-menu-item:first-of-type a")));
+
+		btnName.click();
+						
+			Thread.sleep(8000);
 		{
 
 			driver.findElement(By.linkText("Dismiss")).click();
