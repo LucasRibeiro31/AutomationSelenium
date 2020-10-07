@@ -28,7 +28,6 @@ public class InStoreToMailIn {
 	public void instoretomailin() throws InterruptedException {
 		instoretomailin(new InternetExplorerDriver());
 	}
-
 	private void instoretomailin(WebDriver driver) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
