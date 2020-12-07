@@ -49,12 +49,18 @@ public class QAPesquisaTest {
     driver.findElement(By.id("nf-field-8")).sendKeys("lucascosta21@gmail.com");
     driver.findElement(By.id("nf-field-17")).click();
     driver.findElement(By.id("nf-field-17")).sendKeys("41999999999999");
-    driver.findElement(By.id("nf-label-class-field-10-0")).click();
+    Thread.sleep(1000);
+    driver.findElement(By.id("nf-label-class-field-10-1")).click();
     driver.findElement(By.id("nf-field-11")).click();
     {
       WebElement dropdown = driver.findElement(By.id("nf-field-11"));
       dropdown.findElement(By.xpath("//option[. = 'mais de 5 anos']")).click();
-          
+      
+      Thread.sleep(1000);
+      
+      WebElement dropdown2 = driver.findElement(By.id("nf-field-12"));
+      dropdown2.findElement(By.xpath("//option[. = 'Salário']")).click();
+                      
         driver.findElement(By.id("nf-label-class-field-13-1")).click();
         driver.findElement(By.id("nf-field-14")).click();
         driver.findElement(By.id("nf-field-14")).sendKeys("java");
