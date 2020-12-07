@@ -35,12 +35,12 @@ public class QAPesquisaTest {
   }
   @After
   public void tearDown() {
-    driver.quit();
+   // driver.quit();
   }
   @Test
   public void qAPesquisa() throws InterruptedException {
     driver.get("http://www.lourencodemonaco.com.br/vvtest/");
-    driver.manage().window().setSize(new Dimension(1382, 744));
+    driver.manage().window().setSize(new Dimension(1920, 1080));
     driver.findElement(By.cssSelector("#menu-item-226 > a")).click();
     driver.findElement(By.id("nf-field-5")).click();
     driver.findElement(By.id("nf-field-5")).sendKeys("Lucas");
@@ -54,15 +54,7 @@ public class QAPesquisaTest {
     {
       WebElement dropdown = driver.findElement(By.id("nf-field-11"));
       dropdown.findElement(By.xpath("//option[. = 'mais de 5 anos']")).click();
-    }
-    driver.findElement(By.id("nf-field-11")).click();
-    driver.findElement(By.id("nf-field-12")).click();
-    {
-    	driver.findElement(By.cssSelector("#menu-item-226 > a")).click();
-        driver.findElement(By.id("nf-field-12")).click();
-        driver.findElement(By.xpath("//*[@id=\"nf-field-12\"]/option[2]")).click();
-        
-        driver.findElement(By.id("nf-field-12")).click();
+          
         driver.findElement(By.id("nf-label-class-field-13-1")).click();
         driver.findElement(By.id("nf-field-14")).click();
         driver.findElement(By.id("nf-field-14")).sendKeys("java");
